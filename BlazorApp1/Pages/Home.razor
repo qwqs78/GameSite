@@ -1,0 +1,54 @@
+﻿@page "/"
+@using System
+
+<PageTitle>Game Collection</PageTitle>
+
+<h1>🎮 게임 모음</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>게임 제목</th>
+            <th>실행</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var game in games)
+        {
+            <tr>
+                <td>@game.Name</td>
+                <td><button @onclick="() => StartGame(game.Url)">Play</button></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (!string.IsNullOrEmpty(selectedGame))
+{
+    <h2>📌 현재 실행 중: @selectedGame</h2>
+    <iframe src="@selectedGame" width="800" height="600"></iframe>
+}
+
+@code {
+    private List<Game> games = new()
+    {
+        new Game { Name = "숫자 맞추기 게임", Url = "/guessgame" },
+        new Game { Name = "테트리스", Url = "/tetris" }
+    };
+
+    private string? selectedGame;
+
+    void StartGame(string url)
+    {
+        selectedGame = url;
+    }
+
+    class Game
+    {
+        public string Name { get; set; } = "";
+        public string Url { get; set; } = "";
+    }
+}
+
+
+

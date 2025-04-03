@@ -1,0 +1,26 @@
+﻿@page "/guessgame"
+@layout null
+<h3>🎮 숫자 맞추기 게임1</h3>
+
+<p>1~100 사이의 숫자를 입력하세요:</p>
+<input @bind="userGuess" type="number" />
+<button @onclick="CheckGuess">확인</button>
+
+<p>@message</p>
+
+@code {
+    static Random random = new Random();
+    int secretNumber = random.Next(1, 101);
+    int userGuess;
+    string message = "";
+
+    void CheckGuess()
+    {
+        if (userGuess < secretNumber)
+            message = "🔼 더 큰 숫자를 입력하세요!";
+        else if (userGuess > secretNumber)
+            message = "🔽 더 작은 숫자를 입력하세요!";
+        else
+            message = "🎉 정답입니다!";
+    }
+}

@@ -1,0 +1,34 @@
+﻿@page "/tetris"
+@inject IJSRuntime JS
+
+<h3>🎮 테트리스</h3>
+<canvas id="tetrisCanvas" width="300" height="400" style="border: 2px solid black;"></canvas>
+
+<p>⬅️ 왼쪽 / ➡️ 오른쪽 / ⬆️ 회전 / ⬇️ 아래로 이동</p>
+<button @onclick="StartGame">게임 시작</button>
+<button @onclick="StopGame">게임 종료</button>
+
+@code {
+    private TetrisInterop? _tetrisInterop;
+
+    protected override void OnInitialized()
+    {
+        _tetrisInterop = new TetrisInterop(JS);
+    }
+
+    private async Task StartGame()
+    {
+        if (_tetrisInterop != null)
+        {
+            await _tetrisInterop.StartTetris();
+        }
+    }
+
+    private async Task StopGame()
+    {
+        if (_tetrisInterop != null)
+        {
+            await _tetrisInterop.StopTetris();
+        }
+    }
+}

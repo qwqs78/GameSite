@@ -24,7 +24,7 @@
 
     start() {
         document.addEventListener("keydown", (e) => this.handleKeyPress(e));
-        this.loop();
+        requestAnimationFrame((t) => this.loop(t));
     }
 
     getRandomPiece() {
@@ -134,7 +134,12 @@
             row.forEach((value, x) => {
                 if (value) {
                     this.context.fillStyle = "blue";
-                    this.context.fillRect(x * 30, y * 30, 30, 30);
+                    this.context.fillRect(
+                        x * this.blockSize,
+                        y * this.blockSize,
+                        this.blockSize,
+                        this.blockSize
+                    );
                 }
             });
         });
@@ -154,21 +159,30 @@
         });
     }
 
-    loop() {
+    loop(timestamp) {
         if (!this.isRunning) return;
 
+        if (!this.lastTime) this.lastTime = timestamp;
+        const delta = timestamp - this.lastTime;
+
+        if (delta > this.dropInterval) {
+            this.drop();
+            this.lastTime = timestamp;
+        }
+
         this.draw();
-        setTimeout(() => this.loop(), 500);
+        requestAnimationFrame((t) => this.loop(t));
     }
+
     stop() {
         this.isRunning = false;
     }
 }
 
 
-window.startTetris = function (dotNetHelper) {
+window.startTetris = function () {
     console.log("Tetris game started!");
-    window.tetrisGame = new Tetris(dotNetHelper);  // Tetris 객체 생성
+    window.tetrisGame = new Tetris();  // Tetris 객체 생성
 };
 
 window.stopTetris = function () {

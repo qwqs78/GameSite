@@ -1,16 +1,25 @@
 ﻿class Tetris {
-    constructor(dotNetHelper) {
-        this.dotNetHelper = dotNetHelper;
+    constructor() {
         this.canvas = document.getElementById('tetrisCanvas');
         this.context = this.canvas.getContext('2d');
         this.rows = 20;
         this.cols = 10;
         this.grid = Array.from({ length: this.rows }, () => Array(this.cols).fill(0));
-        this.currentPiece = this.getRanndomPiece();
-        this.start();
         this.isRunning = true;
-        this.loop();
         this.blockSize = this.canvas.width / this.cols; // 블록 크기 설정
+
+        this.TETROMINOS = [
+            [[1, 1, 1], [0, 1, 0]], // T 모양
+            [[1, 1], [1, 1]], // O 모양
+            [[1, 1, 0], [0, 1, 1]], // Z 모양
+            [[0, 1, 1], [1, 1, 0]], // S 모양
+            [[1, 1, 1, 1]], // I 모양
+            [[1, 1, 1], [1, 0, 0]], // L 모양
+            [[1, 1, 1], [0, 0, 1]]  // J 모양
+        ];
+
+        this.currentPiece = this.getRandomPiece(); // 랜덤 블록 생성
+        this.start();
     }
 
     start() {
@@ -19,9 +28,10 @@
     }
 
     getRandomPiece() {
-        const randomIndex = Math.floor(Math.random() * TETROMINOS.length);
-        return { x: 4, y: 0, shape: TETROMINOS[randomIndex] };
+        const randomIndex = Math.floor(Math.random() * this.TETROMINOS.length);
+        return { x: 4, y: 0, shape: this.TETROMINOS[randomIndex] };
     }
+
 
     handleKeyPress(event) {
         if (event.key === "ArrowLeft") this.move(-1);
@@ -41,7 +51,7 @@
             this.currentPiece.y += 1;
         } else {
             this.placeBlock();
-            this.spawnNewPiece(); // 새로운 블록 생성
+            this.newPiece(); // 새로운 블록 생성
             if (this.collision(0, 0)) { // 새 블록이 겹치면 게임 오버
                 alert("Game Over!");
                 this.resetGame();
@@ -63,6 +73,11 @@
             this.currentPiece.shape = oldShape; // 충돌 시 회전 취소
         }
     }
+    resetGame() {
+        this.grid = Array.from({ length: this.rows }, () => Array(this.cols).fill(0));
+        this.currentPiece = this.getRandomPiece();
+    }
+
 
     collision(offsetX, offsetY) {
         return this.currentPiece.shape.some((row, rIdx) => {
@@ -100,7 +115,7 @@
     }
 
     newPiece() {
-        this.currentPiece = { x: 4, y: 0, shape: [[1, 1, 1], [0, 1, 0]] };
+        this.currentPiece = this.getRandomPiece();
     }
 
     checkLines() {
@@ -140,6 +155,8 @@
     }
 
     loop() {
+        if (!this.isRunning) return;
+
         this.draw();
         setTimeout(() => this.loop(), 500);
     }
@@ -149,9 +166,9 @@
 }
 
 
-window.startTetris = function () {
+window.startTetris = function (dotNetHelper) {
     console.log("Tetris game started!");
-    window.tetrisGame = new Tetris();  // Tetris 객체 생성
+    window.tetrisGame = new Tetris(dotNetHelper);  // Tetris 객체 생성
 };
 
 window.stopTetris = function () {

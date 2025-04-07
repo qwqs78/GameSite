@@ -12,9 +12,9 @@
             _jsRuntime = jsRuntime;
         }
 
-        public async Task StartTetris()
+        public async Task StartTetris(DotNetObjectReference<TetrisInterop> dotNetHelper)
         {
-            await _jsRuntime.InvokeVoidAsync("startTetris"); // tetris.js 함수 호출
+            await _jsRuntime.InvokeVoidAsync("startTetris", dotNetHelper); // tetris.js 함수 호출
         }
 
         public async Task StopTetris()

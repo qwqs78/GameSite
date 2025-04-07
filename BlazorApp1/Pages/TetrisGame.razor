@@ -2,7 +2,7 @@
 @inject IJSRuntime JS
 
 <h3>🎮 테트리스</h3>
-<canvas id="tetrisCanvas" width="300" height="400" style="border: 2px solid black;"></canvas>
+<canvas id="tetrisCanvas" width="400" height="600" style="border: 2px solid black;"></canvas>
 
 <p>⬅️ 왼쪽 / ➡️ 오른쪽 / ⬆️ 회전 / ⬇️ 아래로 이동</p>
 <button @onclick="StartGame">게임 시작</button>
@@ -20,7 +20,8 @@
     {
         if (_tetrisInterop != null)
         {
-            await _tetrisInterop.StartTetris();
+            var helperRef = DotNetObjectReference.Create(_tetrisInterop);
+            await JS.InvokeVoidAsync("startTetris", helperRef);
         }
     }
 

@@ -1,35 +1,23 @@
 ﻿@page "/"
-@using System
 @inject NavigationManager NavManager
 
-<PageTitle>Game Collection</PageTitle>
+<h1 class="title">🎮 HC 게임 모음집</h1>
 
-<h1>🎮 HC 게임 모음집</h1>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>게임 제목</th>
-            <th>실행</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var game in games)
-        {
-            <tr>
-                <td>@game.Name</td>
-                <td><button @onclick="() => StartGame(game.Url)">Play</button></td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div class="game-grid">
+    @foreach (var game in games)
+    {
+        <div class="game-card">
+            <img src="@game.ImageUrl" alt="@game.Name" class="game-image" />
+            <div class="game-name">@game.Name</div>
+            <button class="game-button" @onclick="() => StartGame(game.Url)">▶ 시작</button>
+        </div>
+    }
+</div>
 
 @if (!string.IsNullOrEmpty(selectedGame))
 {
-    <h2>📌 현재 실행 중: @selectedGame</h2>
- <iframe src="@selectedGame" width="400" height="800" style="border: none;"></iframe>
-
-
+    <h2 class="running-title">📌 현재 실행 중</h2>
+    <iframe src="@selectedGame" width="400" height="800" style="border: none;"></iframe>
 }
 
 @code {
@@ -39,12 +27,11 @@
     protected override void OnInitialized()
     {
         var baseUri = NavManager.BaseUri.TrimEnd('/');
-
         games = new()
         {
-            new Game { Name = "숫자 맞추기 게임", Url = $"{baseUri}/guessgame" },
-            new Game { Name = "테트리스", Url = $"{baseUri}/tetris" },
-            new Game { Name = "지렁이 게임", Url = $"{baseUri}/snake" },
+            new Game { Name = "숫자 맞추기 게임", Url = $"{baseUri}/guessgame", ImageUrl = "images/number.jpg" },
+            new Game { Name = "테트리스", Url = $"{baseUri}/tetris", ImageUrl = "images/tetris.jpg" },
+            new Game { Name = "지렁이 게임", Url = $"{baseUri}/snake", ImageUrl = "images/snake.jpg" },
         };
     }
 
@@ -57,7 +44,6 @@
     {
         public string Name { get; set; } = "";
         public string Url { get; set; } = "";
+        public string ImageUrl { get; set; } = "";
     }
 }
-
-

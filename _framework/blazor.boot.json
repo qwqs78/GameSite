@@ -1,9 +1,9 @@
 {
   "mainAssemblyName": "BlazorApp1",
   "resources": {
-    "hash": "sha256-+fngy6i59PFA4LyxPgCJtV8dbPn9Cfkm5CKQBHSbpLA=",
+    "hash": "sha256-yRCF6H0ZTLCwiwft8J+AsYoJ5lpevMl0dS49qNT2Oi0=",
     "fingerprinting": {
-      "BlazorApp1.v6uqk3pdzo.wasm": "BlazorApp1.wasm",
+      "BlazorApp1.6hhxn8lpzy.wasm": "BlazorApp1.wasm",
       "Microsoft.AspNetCore.Components.rm3p32zohl.wasm": "Microsoft.AspNetCore.Components.wasm",
       "Microsoft.AspNetCore.Components.Web.e5f7shz2gy.wasm": "Microsoft.AspNetCore.Components.Web.wasm",
       "Microsoft.AspNetCore.Components.WebAssembly.qyco4g5bmd.wasm": "Microsoft.AspNetCore.Components.WebAssembly.wasm",
@@ -31,7 +31,7 @@
       "System.Private.CoreLib.jkntt170hz.wasm": "System.Private.CoreLib.wasm",
       "System.Private.Uri.fvcz5y167u.wasm": "System.Private.Uri.wasm",
       "System.Runtime.InteropServices.JavaScript.h0o384gvzn.wasm": "System.Runtime.InteropServices.JavaScript.wasm",
-      "System.Runtime.49vut0ch74.wasm": "System.Runtime.wasm",
+      "System.Runtime.balxxnfquq.wasm": "System.Runtime.wasm",
       "System.Text.Encodings.Web.4qnc5ob8fw.wasm": "System.Text.Encodings.Web.wasm",
       "System.Text.Json.o6enfnx3k3.wasm": "System.Text.Json.wasm",
       "System.Text.RegularExpressions.k97bmwwlww.wasm": "System.Text.RegularExpressions.wasm",
@@ -62,7 +62,7 @@
       "System.Runtime.InteropServices.JavaScript.h0o384gvzn.wasm": "sha256-rwtckCDh2hrAqX7g10ShSPlmBHiMU4i3ALHrPCgasio="
     },
     "assembly": {
-      "BlazorApp1.v6uqk3pdzo.wasm": "sha256-qZRHaD7g8lGxkeSU7a1oySaN1ZK6F73LsvoUH2M6jrc=",
+      "BlazorApp1.6hhxn8lpzy.wasm": "sha256-RgJqomPAZ3SHND68h7EV5U99z5wphqCgirWWy4E8D0g=",
       "Microsoft.AspNetCore.Components.rm3p32zohl.wasm": "sha256-oznuwOqcrlAg3Hfb3ffFM1Vv50ch36crRjQp332qwVk=",
       "Microsoft.AspNetCore.Components.Web.e5f7shz2gy.wasm": "sha256-cnj7mFKat+cs4qwAmMURtHYZ5WSbByNa2+tkxRLRBFc=",
       "Microsoft.AspNetCore.Components.WebAssembly.qyco4g5bmd.wasm": "sha256-oitky6v+cC5sMmEkKurORgAL8h6q3jcJRkF7eYw2ubk=",
@@ -88,7 +88,7 @@
       "System.Net.Http.aj2feyvngd.wasm": "sha256-lgC6Pdt58Zwi70Y6m1RIz7/M0Kc1fOr+YXKm9DOoffc=",
       "System.Net.Primitives.6dp0hworr7.wasm": "sha256-avEp88RE6M536y77XPXfgLCPwGU4sqPZTkQFh4GlivY=",
       "System.Private.Uri.fvcz5y167u.wasm": "sha256-FVdJw5mSK47asoHVv08J3517y6PcuYrWwyJwzwjsT3M=",
-      "System.Runtime.49vut0ch74.wasm": "sha256-uDY7BqDf0yAaL5ec/5H3vQ1+Bp8eU724xGXk5zXKGxI=",
+      "System.Runtime.balxxnfquq.wasm": "sha256-A9ek/4wI85Vb2p7v4SD5hqKUe4VuceqtbfZYbWXph2w=",
       "System.Text.Encodings.Web.4qnc5ob8fw.wasm": "sha256-5Mdg06wJmV71i7Tthxew0G5t7CrcNRFfCPj0MRo2eLo=",
       "System.Text.Json.o6enfnx3k3.wasm": "sha256-kKIxcaHG4d4lqDl2x7hXv991PJv8TJl0ZroUAj/Eua0=",
       "System.Text.RegularExpressions.k97bmwwlww.wasm": "sha256-eHCCZWjbc1/U7RQyxwm8SPCC0LFx2j7KA8Trg+vzhSo="

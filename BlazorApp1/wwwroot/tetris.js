@@ -6,7 +6,11 @@
         this.cols = 10;
         this.grid = Array.from({ length: this.rows }, () => Array(this.cols).fill(0));
         this.isRunning = true;
-        this.blockSize = this.canvas.width / this.cols; // 블록 크기 설정
+        this.blockSize = 40; // 고정 크기
+
+        this.canvas.width = this.cols * this.blockSize;
+        this.canvas.height = this.rows * this.blockSize;
+
 
         this.TETROMINOS = [
             [[1, 1, 1], [0, 1, 0]], // T 모양

@@ -16,7 +16,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '9.0.x' # 사용 중인 .NET SDK 버전
+          dotnet-version: '9.0.201' # 사용 중인 .NET SDK 버전
 
       - name: Publish Blazor WebAssembly App
         run: dotnet publish BlazorApp1 -c Release -o release
@@ -29,3 +29,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: release/wwwroot
+      

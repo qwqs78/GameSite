@@ -1,5 +1,6 @@
 ﻿@page "/"
 @using System
+@inject NavigationManager NavManager
 
 <PageTitle>Game Collection</PageTitle>
 
@@ -28,17 +29,24 @@
     <h2>📌 현재 실행 중: @selectedGame</h2>
  <iframe src="@selectedGame" width="400" height="800" style="border: none;"></iframe>
 
+
 }
 
 @code {
-    private List<Game> games = new()
-    {
-        new Game { Name = "숫자 맞추기 게임", Url = "/guessgame" },
-        new Game { Name = "테트리스", Url = "/tetris" },
-		new Game { Name = "지렁이 게임", Url = "/snake" },
-    };
-
+    private List<Game> games = new();
     private string? selectedGame;
+
+    protected override void OnInitialized()
+    {
+        var baseUri = NavManager.BaseUri.TrimEnd('/');
+
+        games = new()
+        {
+            new Game { Name = "숫자 맞추기 게임", Url = $"{baseUri}/guessgame" },
+            new Game { Name = "테트리스", Url = $"{baseUri}/tetris" },
+            new Game { Name = "지렁이 게임", Url = $"{baseUri}/snake" },
+        };
+    }
 
     void StartGame(string url)
     {

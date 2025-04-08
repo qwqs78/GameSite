@@ -1,0 +1,15 @@
+﻿@page "/snake"
+@inject IJSRuntime? JS
+
+<h1>🐍 Snake Game</h1>
+<canvas id="snakeCanvas" width="800" height="800" style="border:1px solid #000;"></canvas>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender && JS != null)
+        {
+            await JS.InvokeVoidAsync("startSnakeGame");
+        }
+    }
+}

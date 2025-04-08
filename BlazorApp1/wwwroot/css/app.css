@@ -118,3 +118,9 @@ code {
     max-width: 100%; /* 화면에 맞게 조정 */
     max-height: 100%; /* 비율 유지 */
 }
+#snakeCanvas {
+    display: block;
+    margin: 0 auto;  가운데 정렬 
+    max-width: 100%;  화면에 맞게 조정 
+    max-height: 100%;  비율 유지 
+}

@@ -58,3 +58,13 @@
     font-size: 20px;
     margin: 20px 0 10px;
 }
+.scroll-wrapper {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 1rem;
+}
+
+.scroll-container {
+    display: flex;
+    gap: 1rem;
+}

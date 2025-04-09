@@ -1,21 +1,26 @@
 ﻿@page "/"
 @inject NavigationManager NavManager
+@inject IJSRuntime JS
 
 <a href="#" onclick="window.parent.location.reload()">🎮 HC 게임 모음집</a>
 
 
 
 
-<div class="game-grid">
-    @foreach (var game in games)
-    {
-        <div class="game-card">
-            <img src="@game.ImageUrl" alt="@game.Name" class="game-image" />
-            <div class="game-name">@game.Name</div>
-            <button class="game-button" @onclick="() => StartGame(game.Url)">▶ 시작</button>
-        </div>
-    }
+<div class="scroll-wrapper">
+    <div class="scroll-container">
+        @foreach (var game in games)
+        {
+            <div class="game-card">
+                <img src="@game.ImageUrl" alt="@game.Name" class="game-image" />
+                <div class="game-name">@game.Name</div>
+                <button class="game-button" @onclick="() => StartGame(game.Url)">▶ 시작</button>
+            </div>
+        }
+    </div>
 </div>
+
+
 
 @if (!string.IsNullOrEmpty(selectedGame))
 {
@@ -31,6 +36,7 @@
 @code {
     private List<Game> games = new();
     private string? selectedGame;
+	private ElementReference sliderRef;
 
     protected override void OnInitialized()
     {
@@ -40,7 +46,18 @@
             new Game { Name = "숫자 맞추기 게임", Url = $"{baseUri}/guessgame", ImageUrl = "images/number.jpg" },
             new Game { Name = "테트리스", Url = $"{baseUri}/tetris", ImageUrl = "images/tetris.jpg" },
             new Game { Name = "지렁이 게임", Url = $"{baseUri}/snake", ImageUrl = "images/snake.jpg" },
+            new Game { Name = "NULL", Url = $"{baseUri}/snake", ImageUrl = "images/snake.jpg" }
+            
         };
+    }
+    async Task ScrollLeft()
+    {
+        await JS.InvokeVoidAsync("scrollSlider", sliderRef, -300);
+    }
+
+    async Task ScrollRight()
+    {
+        await JS.InvokeVoidAsync("scrollSlider", sliderRef, 300);
     }
 
     void StartGame(string url)

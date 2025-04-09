@@ -1,15 +1,20 @@
 ﻿@page "/snake"
-@inject IJSRuntime? JS
+@inject IJSRuntime JS
+@using Microsoft.JSInterop;
 
 <h1>🐍 Snake Game</h1>
+@if (!isGameStarted)
+{
+    <button @onclick="startSnakeGame" style="font-size: 20px; margin-bottom: 20px;">▶ 게임 시작</button>
+}
 <canvas id="snakeCanvas" width="500" height="500" style="border:1px solid #000;"></canvas>
 
 @code {
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    private bool isGameStarted = false;
+
+    private async Task startSnakeGame()
     {
-        if (firstRender && JS != null)
-        {
-            await JS.InvokeVoidAsync("startSnakeGame");
-        }
+        isGameStarted = true;
+        await JS.InvokeVoidAsync("startSnakeGame");
     }
 }

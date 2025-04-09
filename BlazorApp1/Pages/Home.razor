@@ -17,7 +17,12 @@
 @if (!string.IsNullOrEmpty(selectedGame))
 {
     <h2 class="running-title">📌 현재 실행 중</h2>
-    <iframe src="@selectedGame" width="400" height="800" style="border: none;"></iframe>
+    <iframe src="@selectedGame"
+            style="border: none; width: 90vw; height: 90vw; max-width: 800px; max-height: 800px; display: block; margin: 0 auto;">
+    </iframe>
+
+
+
 }
 
 @code {

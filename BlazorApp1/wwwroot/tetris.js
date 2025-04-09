@@ -57,7 +57,7 @@
             this.placeBlock();
             this.newPiece(); // 새로운 블록 생성
             if (this.collision(0, 0)) { // 새 블록이 겹치면 게임 오버
-                alert("Game Over!");
+                alert("게임 오버 !");
                 this.resetGame();
             }
         }

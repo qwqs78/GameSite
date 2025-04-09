@@ -30,6 +30,12 @@
     <script src="tetris.js"></script>
     <script src="_framework/blazor.webassembly.js"></script>
     <script src="snake.js"></script>
+    <script>
+        window.scrollSlider = (element, distance) => {
+            element.scrollBy({ left: distance, behavior: 'smooth' });
+        };
+    </script>
+
 </body>
 
 </html>

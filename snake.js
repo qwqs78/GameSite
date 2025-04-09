@@ -39,8 +39,7 @@
         // 충돌 체크
         if (head.x < 0 || head.x >= this.cols || head.y < 0 || head.y >= this.rows ||
             this.snake.some(s => s.x === head.x && s.y === head.y)) {
-            alert("Game Over!");
-            clearInterval(this.gameLoop);
+            this.gameOver();
             return;
         }
 
@@ -54,6 +53,24 @@
 
         this.draw();
     }
+
+    gameOver() {
+        clearInterval(this.gameLoop);
+
+        const controls = document.createElement('div');
+        controls.id = "game-controls";
+        controls.style.marginTop = "10px";
+        controls.style.textAlign = "center";
+
+        controls.innerHTML = `
+        <p style="font-weight: bold; color: red;">게임 오버!</p>
+        <button onclick="restartSnakeGame()">다시 시작</button>
+        <button onclick="exitSnakeGame()">게임 종료</button>
+    `;
+
+        this.canvas.parentNode.appendChild(controls);
+    }
+    
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -72,4 +89,15 @@
 
 window.startSnakeGame = function () {
     window.snakeGame = new SnakeGame();
+};
+window.restartSnakeGame = function () {
+    document.getElementById('game-controls')?.remove();
+    window.snakeGame = new SnakeGame();
+};
+
+window.exitSnakeGame = function () {
+    document.getElementById('game-controls')?.remove();
+    const canvas = document.getElementById('snakeCanvas');
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 };

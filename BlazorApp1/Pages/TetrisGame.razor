@@ -2,7 +2,7 @@
 @inject IJSRuntime JS
 
 <h3>🎮 테트리스</h3>
-<canvas id="tetrisCanvas" width="600" height="1000" style="border: 2px solid black;"></canvas>
+<canvas id="tetrisCanvas" width="300" height="300" style="border: 2px solid black;"></canvas>
 
 <p>⬅️ 왼쪽 / ➡️ 오른쪽 / ⬆️ 회전 / ⬇️ 아래로 이동</p>
 <button @onclick="StartGame">게임 시작</button>
@@ -11,7 +11,7 @@
 @code {
     private TetrisInterop? _tetrisInterop;
 
-    protected override void OnInitialized()
+    protected override void OnInitialized() 
     {
         _tetrisInterop = new TetrisInterop(JS);
     }

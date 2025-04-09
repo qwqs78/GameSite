@@ -6,7 +6,7 @@
         this.cols = 10;
         this.grid = Array.from({ length: this.rows }, () => Array(this.cols).fill(0));
         this.isRunning = true;
-        this.blockSize = 40; // 고정 크기
+        this.blockSize = 30; // 고정 크기
 
         this.canvas.width = this.cols * this.blockSize;
         this.canvas.height = this.rows * this.blockSize;

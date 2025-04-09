@@ -3,7 +3,6 @@
 
 <h3>🎮 숫자 맞추기 게임</h3>
 
-<button @onclick="CloseGame" style="float: right; font-size: 20px;">❌</button> <!-- X 버튼 -->
 
 <p>1~100 사이의 숫자를 입력하세요:</p>
 <input @bind="userGuess" type="number" />
@@ -20,15 +19,11 @@
     void CheckGuess()
     {
         if (userGuess < secretNumber)
-            message = "🔼 더 큰 숫자를 입력하세요!";
+            message = $"🔼 {userGuess}보다 더 큰 숫자를 입력하세요!";
         else if (userGuess > secretNumber)
-            message = "🔽 더 작은 숫자를 입력하세요!";
+            message = $"🔽 {userGuess}보다 더 작은 숫자를 입력하세요!";
         else
             message = "🎉 정답입니다!";
     }
 
-    void CloseGame()
-    {
-        Navigation.NavigateTo("/"); // 메인 페이지로 이동
-    }
 }

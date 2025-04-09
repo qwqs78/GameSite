@@ -1,7 +1,10 @@
 ﻿@page "/"
 @inject NavigationManager NavManager
 
-<h1 class="title">🎮 HC 게임 모음집</h1>
+<a href="#" onclick="window.parent.location.reload()">🎮 HC 게임 모음집</a>
+
+
+
 
 <div class="game-grid">
     @foreach (var game in games)
@@ -16,10 +19,10 @@
 
 @if (!string.IsNullOrEmpty(selectedGame))
 {
-    <h2 class="running-title">📌 현재 실행 중</h2>
+    <h2 class="running-title">📌 게임 실행 중</h2>
     <iframe src="@selectedGame"
-            style="border: none; width: 90vw; height: 90vw; max-width: 800px; max-height: 800px; display: block; margin: 0 auto;">
-    </iframe>
+        style="border: none; width: 90vw; height: 90vw; max-width: 800px; max-height: 800px; display: block; margin: 0 auto;">
+</iframe>
 
 
 
@@ -51,4 +54,5 @@
         public string Url { get; set; } = "";
         public string ImageUrl { get; set; } = "";
     }
+    
 }

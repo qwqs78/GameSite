@@ -96,6 +96,8 @@ window.restartPoopDodgeGame = function () {
     cancelAnimationFrame(poopGameState.animationId);
     poopGameState.isRunning = false;
 
+    score = 0;
+
     const btns = document.getElementById("gameOverButtons");
     if (btns) btns.style.display = "none";
 

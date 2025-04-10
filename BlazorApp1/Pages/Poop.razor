@@ -9,6 +9,11 @@
 }
 <canvas id="poopCanvas" width="400" height="600" style="border:1px solid #000; display:@(isGameStarted ? "block" : "none");"></canvas>
 
+<div id="gameOverButtons" style="display: none; margin-top: 10px;">
+    <button onclick="restartPoopDodgeGame()">다시 시작</button>
+    <button onclick="endPoopDodgeGame()">게임 종료</button>
+</div>
+
 @code {
     private bool isGameStarted = false;
 

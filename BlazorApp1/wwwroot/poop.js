@@ -1,8 +1,8 @@
 ﻿let poopGameState = {
     isRunning: true,
     animationId: null
-    score: 0
 };
+let score = 0;
 
 window.startPoopDodgeGame = function () {
     const canvas = document.getElementById("poopCanvas");
@@ -23,7 +23,6 @@ window.startPoopDodgeGame = function () {
         height: 30,
         speed: 3
     };
-
 
     document.addEventListener("keydown", function (e) {
         if (e.key === "ArrowLeft" && player.x > 0) player.x -= player.speed;
@@ -79,7 +78,7 @@ window.startPoopDodgeGame = function () {
         if (detectCollision()) {
             poopGameState.isRunning = false;
             showGameOverButtons();
-            alert("💥 게임 오버 당신의 최종 점수: " + poopGameState.score);
+            alert("💥 게임 오버 당신의 최종 점수: " + score);
             return;
         }
 

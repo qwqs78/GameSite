@@ -1,10 +1,20 @@
 ﻿@page "/poop"
+@inject IJSRuntime JS
 
-<h3>🎮 준비중2</h3>
+<h1>💩 똥 피하기 게임</h1>
 
+@if (!isGameStarted)
+{
+    <button @onclick="StartGame" class="start-button">게임 시작</button>
+}
+<canvas id="poopCanvas" width="400" height="600" style="border:1px solid #000; display:@(isGameStarted ? "block" : "none");"></canvas>
 
 @code {
-   
+    private bool isGameStarted = false;
 
-    
+    private async Task StartGame()
+    {
+        isGameStarted = true;
+        await JS.InvokeVoidAsync("startPoopDodgeGame");
+    }
 }
